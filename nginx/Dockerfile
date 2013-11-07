@@ -15,7 +15,7 @@
 #
 #     docker run -d -v "/local/data/:/data/" walm/nginx
 #
-# VERSION               1.0
+# VERSION               1.1
 
 FROM ubuntu:12.10
 MAINTAINER Andreas Wålm "andreas@walm.net"
@@ -49,4 +49,5 @@ true
 EXPOSE  80
 EXPOSE  443
 
-CMD /usr/sbin/nginx -c /data/nginx.conf
+CMD ["nginx", "-c", "/data/nginx.conf"]
+
