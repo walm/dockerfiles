@@ -44,4 +44,4 @@ EXPOSE  27017
 # # mongodb admin console
 EXPOSE  28017
 
-CMD ["mongodb"]
+CMD ["mongod"]
