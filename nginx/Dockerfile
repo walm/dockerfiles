@@ -15,7 +15,7 @@
 #
 #     docker run -d -v "/local/data/:/data/" walm/nginx
 #
-# VERSION               1.1
+# VERSION               1.2
 
 FROM ubuntu:12.10
 MAINTAINER Andreas Wålm "andreas@walm.net"
@@ -36,12 +36,12 @@ echo "# Install nginx" ;\
   apt-get -y install nginx ;\
   \
 echo "# Move nginx.conf to /data" ;\
-  mkdir /data ;\
-  mv /etc/nginx/nginx.conf /data/nginx.conf ;\
-  ln -s /data/nginx.conf /etc/nginx/ ;\
+  mkdir -p /data/nginx ;\
+  mv /etc/nginx/nginx.conf /data/nginx/nginx.conf ;\
+  ln -s /data/nginx/nginx.conf /etc/nginx/ ;\
   \
 echo "# Nginx deamon off" ;\
-  echo "daemon off;" >> /data/nginx.conf ;\
+  echo "daemon off;" >> /data/nginx/nginx.conf ;\
   \
 true
 # END RUN
@@ -49,5 +49,5 @@ true
 EXPOSE  80
 EXPOSE  443
 
-CMD ["nginx", "-c", "/data/nginx.conf"]
+CMD ["nginx", "-c", "/data/nginx/nginx.conf"]
 
